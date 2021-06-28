@@ -7,7 +7,8 @@ import pl.tgruza.webcategorizer.model.Website;
 
 public interface WebsiteRepository extends JpaRepository<Website, Long> {
 
-    @Query(value = "SELECT id FROM Website WHERE url = ?1", nativeQuery = true)
-    Long findIdByUrl(String url);
+    Website findWebsiteByUrl(String url);
+
+    boolean existsByUrl(String url);
 
 }
