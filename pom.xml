@@ -11,7 +11,7 @@
     <groupId>pl.tgruza</groupId>
     <artifactId>webcategorizer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>webcategorizator</name>
+    <name>webcategorizer</name>
     <description>App allows user to check website category</description>
     <properties>
         <java.version>8</java.version>
