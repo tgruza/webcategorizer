@@ -15,8 +15,8 @@ public class WebsiteService {
         this.websiteRepository = websiteRepository;
     }
 
-    public Long getWebsiteIdByUrl(String url) {
-        return websiteRepository.findIdByUrl(url);
+    public Website getWebsiteByUrl(String url) {
+        return websiteRepository.findWebsiteByUrl(url);
     }
 
     public Optional<Website> getWebsiteById(Long id) {
@@ -30,4 +30,6 @@ public class WebsiteService {
     public void deleteWebsite(Long id) {
         websiteRepository.deleteById(id);
     }
+
+    public boolean existsByUrl(String url) { return websiteRepository.existsByUrl(url); }
 }

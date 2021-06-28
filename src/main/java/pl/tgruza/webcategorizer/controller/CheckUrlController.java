@@ -48,8 +48,20 @@ public class CheckUrlController {
     @PostMapping("/checkWebsite")
     public RedirectView checkWebsiteInDB(@ModelAttribute Website website) throws IOException {
 
-        if (true) {
+
+        website.setUrl(checkUrl(website.getUrl()));
+
+        if (website.getUrl().equals("https://")) {
+            return new RedirectView("/url_problem");
+        }
+
+        if (!websiteService.existsByUrl(website.getUrl())) {
+
             Set<Category> categories = sendRequestGetCategories(website.getUrl());
+
+            if (categories.isEmpty()) {
+                return new RedirectView("/url_problem");
+            }
 
             for (Category category : categories) {
                 categoryService.saveCategory(category);
@@ -60,7 +72,8 @@ public class CheckUrlController {
 
             return new RedirectView("/checkUrl/" + website.getId());
         }
-        return new RedirectView("/checkUrl/" + websiteService.getWebsiteIdByUrl(website.getUrl()));
+
+        return new RedirectView("/checkUrl/" + websiteService.getWebsiteByUrl(website.getUrl()).getId());
     }
 
     private Set<Category> sendRequestGetCategories(String url) throws IOException {
@@ -101,11 +114,28 @@ public class CheckUrlController {
 
         for (int i = 0; i < temp.length; i++) {
             if (temp[i].equals("name")) {
-                categories.add(new Category(temp[i + 2].substring(2), null));
+                categories.add(new Category(temp[i + 2]
+                        .substring(2)
+                        .replace("\\", "")
+                        , null));
             }
         }
 
         return categories;
+    }
+
+    private String checkUrl(String url) {
+        url = url.toLowerCase();
+        String[] s = url.split("/");
+
+        for (String word : s) {
+            if (!word.equals("") && word.contains("www")) {
+                url = word;
+                break;
+            }
+        }
+
+        return "https://" + url;
     }
 
     //delete Website from database
