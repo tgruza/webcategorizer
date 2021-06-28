@@ -13,4 +13,9 @@ public class MainController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping(value = {"/error"}, method = RequestMethod.GET)
+    public String error() {
+        return "exceptions/wrongUrlException";
+    }
 }
