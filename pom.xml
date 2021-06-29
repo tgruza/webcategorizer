@@ -8,14 +8,22 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+        <java.version>16</java.version>
+    </properties>
+
     <groupId>pl.tgruza</groupId>
     <artifactId>webcategorizer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>webcategorizer</name>
     <description>App allows user to check website category</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>jstl</groupId>
@@ -84,11 +92,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+
                 <version>3.8.0</version>
                 <configuration>
                     <source>11</source>  <!-- same as <java.version> -->
                     <target>11</target>    <!-- same as <java.version> -->
                 </configuration>
+          
             </plugin>
         </plugins>
     </build>
