@@ -25,4 +25,6 @@ public class CategoryService {
 
     public Category getByCategory(String name) { return categoryRepository.findByName(name); }
 
+    public boolean categoryExistsByName(String name) { return categoryRepository.existsByName(name); }
+
 }
