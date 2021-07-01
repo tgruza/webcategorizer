@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/webcategorizer.iml" filepath="$PROJECT_DIR$/webcategorizer.iml" />
-      <module>com.baeldung.java9.httpclient</module>>
     </modules>
   </component>
 </project>

@@ -63,8 +63,8 @@ public class CheckUrlController {
             if (categories.isEmpty()) {
                 return new RedirectView("/url_problem");
             }
-
-            for (int i = 0; i < categories.size() - 1; i++) {
+          
+            for (int i = 0; i < categories.size(); i++) {
                 if (!categoryService.categoryExistsByName(categories.get(i).getName())) {
                     categoryService.saveCategory(categories.get(i));
                     continue;
